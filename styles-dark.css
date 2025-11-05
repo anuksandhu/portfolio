@@ -135,7 +135,7 @@ body {
 /* Hero Section */
 .hero {
     padding: 140px 0 100px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+    background: #1e3a8a;  /* Solid navy blue */
     color: var(--text-primary);
     text-align: center;
     position: relative;
@@ -496,7 +496,7 @@ body {
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+    background: #1e3a8a;
     color: var(--text-primary);
     text-align: center;
     position: relative;
