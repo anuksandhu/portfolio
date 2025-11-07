@@ -326,7 +326,7 @@ body {
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
-    place-items: center;
+    justify-items: center;
 }
 
 .skill-category {
