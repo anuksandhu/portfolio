@@ -577,6 +577,92 @@ body {
     font-size: 0.9rem;
 }
 
+/* Tools Section - Horizontal Scrolling */
+.tools {
+    padding: 80px 0;
+    background-color: var(--bg-dark); /* var(--bg-dark) for dark theme */
+    text-align: center;
+}
+
+.tools-scroll-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1.5rem 0;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Hide scrollbar but keep functionality */
+.tools-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tools-scroll-container::-webkit-scrollbar-track {
+    background: var(--border-color); /* var(--border-color) for dark theme */
+    border-radius: 10px;
+}
+
+.tools-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.tools-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+.tools-icons-scroll {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    width: max-content;
+    padding: 0 1rem;
+}
+
+.tools-icons-scroll img {
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.tools-icons-scroll img:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+/* Custom uploaded tool icons */
+.custom-tool-icon {
+    height: 50px !important;
+    width: auto !important;
+    object-fit: contain;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.tools-scroll-hint {
+    margin-top: 1rem;
+    color: var(--text-muted); /* var(--text-muted) for dark theme */
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .tools {
+        padding: 60px 0;
+    }
+    
+    .tools-icons-scroll {
+        gap: 1rem;
+    }
+    
+    .custom-tool-icon {
+        height: 40px !important;
+    }
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
