@@ -1,3 +1,84 @@
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const htmlEl = document.documentElement;
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+// Check for saved theme or system preference
+const storedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Update icon based on theme
+function updateThemeIcon(isDark) {
+    if (isDark) {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+    } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+    }
+}
+
+// Apply stored or system preference on load
+let isDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+if (isDark) {
+    htmlEl.classList.add('dark');
+}
+updateThemeIcon(isDark);
+
+// Handle theme toggle click
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        htmlEl.classList.toggle('dark');
+        isDark = htmlEl.classList.contains('dark');
+        const newTheme = isDark ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(isDark);
+    });
+}
+
+// Expandable Skill Cards
+const skillCards = document.querySelectorAll('.skill-expandable');
+
+skillCards.forEach(card => {
+    // Make entire card clickable
+    card.addEventListener('click', (e) => {
+        // Prevent if clicking inside a link or button (though we don't have any in skills)
+        if (e.target.closest('a')) return;
+        
+        const isExpanded = card.getAttribute('data-expanded') === 'true';
+        
+        // Toggle expanded state
+        card.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
+        
+        console.log('Card clicked. Was expanded:', isExpanded, 'Now expanded:', !isExpanded);
+    });
+});
+
+// View More Projects Toggle
+const viewMoreBtn = document.getElementById('view-more-projects');
+const moreProjects = document.getElementById('more-projects');
+const viewMoreText = document.getElementById('view-more-text');
+const viewMoreIcon = document.getElementById('view-more-icon');
+
+if (viewMoreBtn && moreProjects) {
+    viewMoreBtn.addEventListener('click', () => {
+        const isHidden = moreProjects.style.display === 'none';
+        
+        if (isHidden) {
+            moreProjects.style.display = 'grid';
+            viewMoreText.textContent = 'View Less';
+            viewMoreIcon.style.transform = 'rotate(180deg)';
+        } else {
+            moreProjects.style.display = 'none';
+            viewMoreText.textContent = 'View More Projects';
+            viewMoreIcon.style.transform = 'rotate(0deg)';
+            // Scroll back to projects section
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+}
+
 // Mobile Menu Toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
